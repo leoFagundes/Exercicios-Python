@@ -11,7 +11,7 @@ for i in range(1, 11):
     notasAlunos.append(notas)
 
 for aluno in notasAlunos:
-    if sum(aluno)/len(aluno) > 7:
+    if sum(aluno)/len(aluno) >= 7:
         acimaMedia += 1
 
 print(f"\n{acimaMedia} alunos ficaram acima da média (7.0)")
