@@ -28,3 +28,54 @@ O arquivo de entrada deve ser lido uma única vez, e os dados armazenados em mem
 A conversão da espaço ocupado em disco, de bytes para megabytes deverá ser feita através de uma função separada, que será chamada pelo programa principal. 
 O cálculo do percentual de uso também deverá ser feito através de uma função, que será chamada pelo programa principal.
 """
+
+#altere o local do arquivo ao tentar rodar o código
+#open(nome do arquivo, objetivo em abrir o arquivo(r, w, a))
+def calcularTamanho(cod):
+    tamanho = cod*434.99/456123789
+    return tamanho
+
+def padronizarLista(lista):
+    global nomes
+    global codigos
+
+    listaProvisoria = []
+    for item in lista:
+        item = item.split()
+        listaProvisoria.append(item)
+        nomes.append(item[0])
+        codigos.append(float(item[1]))
+
+def percentual(codMB, total):
+    percentual = codMB/total
+    return percentual
+
+with open("E://Exercícios.py/04 - Listas/usuario.txt", "r", encoding='utf-8') as arquivo:
+    df = arquivo.readlines()
+
+nomes = []
+codigos = []
+padronizarLista(df)
+
+for nome in nomes:
+    if len(nome) > 15:
+        print("ERROR: Nome com mais de 15 caractéres.") 
+        exit()
+
+texto = f"""ACME Inc.               Uso do espaço em disco pelos usuários
+------------------------------------------------------------------------
+{'Nr.':<5}{'Usuário':^25}{'Espaço utilizado':^25}{'% do uso':^25}
+"""
+
+#altere o local do arquivo ao tentar rodar o código
+#criar o novo arquivo chamado relatorio.txt
+with open("E://Exercícios.py/04 - Listas/relatorio.txt", "w", encoding='utf-8') as relatorio:
+    relatorio.write(texto)
+    totalOcupado = 0
+    for i, nome in enumerate(nomes):
+        relatorio.write(f"{i:<5}{nome:^25}{f'{calcularTamanho(codigos[i]):.2f}':^25}{f'{percentual(codigos[i], sum(codigos)):.2%}':^25}\n")
+        totalOcupado += calcularTamanho(codigos[i])
+    relatorio.write(f"""
+Espaço total ocupado: {totalOcupado:.2f} MB
+Espaço médio ocupado: {totalOcupado/len(codigos):.2f} MB
+    """)
