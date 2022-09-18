@@ -1,4 +1,5 @@
-lista = [1, 2, 3, 3]
-setter = set(lista)
+string = 'leo oe re'
 
-print(len(list(setter)))
+stringL = string[::-1]
+
+print(stringL)
