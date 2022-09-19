@@ -1,4 +1,4 @@
-lista = ['a', 'b', 'c', 'a']
+dic = {'leo': 'good'}
 
-for letra in lista:
-    print(letra)
+if 'good' in dic:
+    print("oi")
