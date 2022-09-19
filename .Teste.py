@@ -1,5 +1,4 @@
-string = 'leo oe re'
+lista = ['a', 'b', 'c', 'a']
 
-stringL = string[::-1]
-
-print(stringL)
+for letra in lista:
+    print(letra)
