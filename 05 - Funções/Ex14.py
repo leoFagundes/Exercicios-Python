@@ -37,7 +37,7 @@ def quadrado_magico():
                             setterCombinacoes = set(todasCombinacoes)
                             if len(list(setterCombinacoes)) == 9:   
                                 return (combinacoes1, combinacoes2, combinacoes3)
-        
+
 
 x, y, z = quadrado_magico()
 print(f"{x}\n{y}\n{z}")
